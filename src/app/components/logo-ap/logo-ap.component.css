@@ -1,0 +1,52 @@
+.row{
+    margin: 0px;
+}
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.redes{
+    margin-right: 0.5em;
+}
+#logoAP{
+    width: 150px;
+}
+img{
+    width: 50px;
+}
+.btn{
+    border-width: medium;
+}
+.redes img{
+    margin: 0.3em;
+}
+
+/* Para celular */
+@media (max-width: 575px){
+    .container{
+        flex-direction: column;
+    }
+    .redes[_ngcontent-omg-c4] {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .redes img{
+        margin: 0.3em;
+    }
+}
+
+@media (max-width: 427px){
+    .container{
+        flex-direction: column;
+    }
+    .redes[_ngcontent-omg-c4] {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    .redes img{
+        margin: 0.3em;
+    }
+}
