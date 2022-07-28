@@ -1,42 +1,47 @@
 <div class="row">
+    <div class="titulo">
+        <h1>Proyectos Realizados</h1>
+        <p></p>
+    </div>
     <div>
         <div class="text-center">
             <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addProyectosModal" (click)="onOpenModal('add')" *ngIf="isLogged">
                 <a class="nav-link" style="color: #fff">
-                    Añadir Proyecto <span class="sr-only">(current)</span>
+                    Añadir Proyecto 
                 </a>
             </button>
         </div>
     </div>
-    <h1>Proyectos Realizados</h1>
-    <div class="col-lg-1" ></div>
         <div class="col-lg-11">
-            <ul *ngFor="let proyecto of proyectos">
-                <div class="informacion">
-                    <a
-                        (click)="onOpenModal('edit',proyecto)"
-                        type="button"
-                        class="btn btn-success tooltips"
-                        data-placement="top"
-                        data-bs-toggle="modal"
-                        data-bs-target="#editProyectosModal"
-                        data-original-title="edit"
-                        *ngIf="isLogged"><i class="fa fa-pencil"></i>
+            <div cdkDropList class="listaProy" (cdkDropListDropped)="drop($event)">
+                <ul *ngFor="let proyecto of proyectos" cdkDrag>
+                    <div class="listaProy-placeholder" *cdkDragPlaceholder></div>
+                    <div class="informacion">
+                        <a
+                            (click)="onOpenModal('edit',proyecto)"
+                            type="button"
+                            class="btn btn-success tooltips"
+                            data-placement="top"
+                            data-bs-toggle="modal"
+                            data-bs-target="#editProyectosModal"
+                            data-original-title="edit"
+                            *ngIf="isLogged"><i class="fa fa-pencil"></i>
+                            </a>
+                        <a
+                        (click)="onOpenModal('delete',proyecto)"
+                            type="button"
+                            class="btn btn-danger tooltips"
+                            data-placement="top"
+                            data-bs-toggle="modal"
+                            data-bs-target="#deleteProyectosModal"              
+                            data-original-title="delete"
+                            *ngIf="isLogged"><i class="fa fa-times"></i> 
                         </a>
-                    <a
-                    (click)="onOpenModal('delete',proyecto)"
-                        type="button"
-                        class="btn btn-danger tooltips"
-                        data-placement="top"
-                        data-bs-toggle="modal"
-                        data-bs-target="#deleteProyectosModal"              
-                        data-original-title="delete"
-                        *ngIf="isLogged"><i class="fa fa-times"></i> 
-                    </a>
-                </div>
-                <li><h1>{{proyecto.nombreProyecto}} </h1>  <h3>{{proyecto.fechaProyecto}}</h3></li>
-                <p>{{proyecto.descProyecto}}</p>
-            </ul>
+                    </div>
+                    <li><h1>{{proyecto.nombreProyecto}} </h1>  <h3>{{proyecto.fechaProyecto}}</h3></li>
+                    <p>{{proyecto.descProyecto}}</p>
+                </ul>
+            </div>    
     </div>
 </div>
 

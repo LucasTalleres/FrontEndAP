@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Experiencia } from 'src/app/model/experiencia.model';
 import { ExperienciaService } from 'src/app/service/experiencia.service';
 import { TokenService } from 'src/app/service/token.service';
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop'
 
 @Component({
   selector: 'app-experiencia',
@@ -19,6 +20,10 @@ export class ExperienciaComponent implements OnInit {
   isLogged = false;
   
   constructor(private experienciaService:ExperienciaService, private router:Router, private tokenService: TokenService) { }
+
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.experiencia, event.previousIndex, event.currentIndex);
+  }
 
   ngOnInit(): void {
     this.getExperiencia();

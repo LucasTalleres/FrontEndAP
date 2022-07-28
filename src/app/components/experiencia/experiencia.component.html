@@ -1,42 +1,47 @@
 <div class="row">
+    <div class="titulo">
+        <h1>Experiencia laboral</h1>
+        <p></p>
+    </div>
         <div>
             <div class="text-center">
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addExperienciaModal" (click)="onOpenModal('add')" *ngIf="isLogged">
                     <a class="nav-link" style="color: #fff">
-                        Añadir Experiencia <span class="sr-only">(current)</span>
+                        Añadir Experiencia 
                     </a>
                 </button>
             </div>
         </div>
-        <h1>Experiencia laboral</h1>
-        <div class="col-lg-1"></div>
         <div class="col-lg-11">
-            <ul *ngFor="let experiencias of experiencia">
-                <div class="informacion">
-                    <a
-                        (click)="onOpenModal('edit',experiencias)"
-                        type="button"
-                        class="btn btn-success tooltips"
-                        data-placement="top"
-                        data-bs-toggle="modal"
-                        data-bs-target="#editExperienciaModal"
-                        data-original-title="edit"
-                        *ngIf="isLogged"><i class="fa fa-pencil"></i>
+            <div cdkDropList class="listaExp" (cdkDropListDropped)="drop($event)">
+                <ul *ngFor="let experiencias of experiencia" cdkDrag>
+                    <div class="listaExp-placeholder" *cdkDragPlaceholder></div>
+                    <div class="informacion">
+                        <a
+                            (click)="onOpenModal('edit',experiencias)"
+                            type="button"
+                            class="btn btn-success tooltips"
+                            data-placement="top"
+                            data-bs-toggle="modal"
+                            data-bs-target="#editExperienciaModal"
+                            data-original-title="edit"
+                            *ngIf="isLogged"><i class="fa fa-pencil"></i>
+                            </a>
+                        <a
+                        (click)="onOpenModal('delete',experiencias)"
+                            type="button"
+                            class="btn btn-danger tooltips"
+                            data-placement="top"
+                            data-bs-toggle="modal"
+                            data-bs-target="#deleteExperienciaModal"              
+                            data-original-title="delete"
+                            *ngIf="isLogged"><i class="fa fa-times"></i> 
                         </a>
-                    <a
-                    (click)="onOpenModal('delete',experiencias)"
-                        type="button"
-                        class="btn btn-danger tooltips"
-                        data-placement="top"
-                        data-bs-toggle="modal"
-                        data-bs-target="#deleteExperienciaModal"              
-                        data-original-title="delete"
-                        *ngIf="isLogged"><i class="fa fa-times"></i> 
-                    </a>
-                </div>
-                <li><h1>{{experiencias.tituloExp}} </h1>  <h3>{{experiencias.iniExp}} - {{experiencias.finExp}}</h3></li>
-                <p>{{experiencias.descExp}}</p>
-            </ul>
+                    </div>
+                    <li><h1>{{experiencias.tituloExp}} </h1>  <h3>{{experiencias.iniExp}} - {{experiencias.finExp}}</h3></li>
+                    <p>{{experiencias.descExp}}</p>
+                </ul>
+            </div>
         </div>
 </div>    
 
@@ -91,7 +96,6 @@
                             class="form-control"
                             id="iniExp"
                             placeholder="Año"
-                            required
                             >
                         </div>
                         <div class="form-group">
@@ -102,7 +106,6 @@
                             class="form-control"
                             id="finExp"
                             placeholder="Año"
-                            required
                             >
                         </div>
                         <div class="form-group">

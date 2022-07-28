@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Skills } from 'src/app/model/skills.model';
 import { SkillsService } from 'src/app/service/skills.service';
 import { TokenService } from 'src/app/service/token.service';
+import {CdkDragDrop, moveItemInArray, transferArrayItem,} from '@angular/cdk/drag-drop'
 
 @Component({
   selector: 'app-hardysoft',
@@ -105,6 +106,24 @@ export class HardysoftComponent implements OnInit {
         alert(error.message);
       }
     })
+  }
+
+  drop(event: CdkDragDrop<Skills[]>) {
+      if (event.previousContainer === event.container) {
+        moveItemInArray(
+          event.container.data,
+          event.previousIndex,
+          event.currentIndex
+        );
+      } else {
+        transferArrayItem(
+          event.previousContainer.data,
+          event.container.data,
+          event.previousIndex,
+          event.currentIndex
+        );
+      }
+    
   }
 
 }

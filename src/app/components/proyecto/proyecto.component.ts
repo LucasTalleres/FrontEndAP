@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Proyectos } from 'src/app/model/proyecto.model';
 import { ProyectosService } from 'src/app/service/proyectos.service';
 import { TokenService } from 'src/app/service/token.service';
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop'
 
 @Component({
   selector: 'app-proyecto',
@@ -19,6 +20,10 @@ export class ProyectoComponent implements OnInit {
   isLogged = false;
 
   constructor(private proyectosService:ProyectosService, private router:Router, private tokenService: TokenService) { }
+
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.proyectos, event.previousIndex, event.currentIndex);
+  }
 
   ngOnInit(): void {
     this.getProyecto();
