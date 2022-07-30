@@ -34,10 +34,15 @@
 
 .listaEdu-placeholder {
     background: #04102b;
-    border: dotted 3px rgb(252, 252, 252);
-    min-height: 120px;
+    border: dotted 2px rgb(252, 252, 252);
+    min-height: 90px;
     transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
   }
+
+.agarrar {
+    color: #ccc;
+    height: 24px;
+}
 
 h1, h3{
     display: inline;

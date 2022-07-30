@@ -20,6 +20,11 @@
     display: block;
 }
 
+.agarrar {
+    color: #ccc;
+    height: 24px;
+}
+
 .skillcircle{
     display: flex;
 
